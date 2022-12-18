@@ -9,17 +9,13 @@ const Error = () => {
   const errorMsg = <>페이지를 찾을 수 없습니다.</>;
 
   return (
-    <StyledWrapper id="errPage">
-      <div className="__err_text">
-        <div className="__back">
-          <b>{errorMsg}</b>
-          <div>
-            <Button danger size="large" onClick={() => router.replace('/')}>
-              <ArrowLeftOutlined />
-              돌아가기
-            </Button>
-          </div>
-        </div>
+    <StyledWrapper>
+      <div className="container">
+        <div className="errorMsg">{errorMsg}</div>
+        <Button danger size="large" onClick={() => router.replace('/')}>
+          <ArrowLeftOutlined />
+          돌아가기
+        </Button>
       </div>
     </StyledWrapper>
   );
@@ -28,55 +24,18 @@ const Error = () => {
 export default Error;
 
 const StyledWrapper = styled.div`
-  position: relative;
-  height: 80%;
-  text-align: center;
-  flex-direction: column;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 
-  .__img {
-    display: block;
-    width: 52px;
-    margin: 0 0 40px;
-  }
-
-  i {
-    font-size: 20px;
-    display: block;
-    margin: 0 0 20px;
-    span {
-      margin: 15px 0;
-      padding: 5px 15px;
-      border-radius: 100px;
-      background: rgba(51, 51, 51);
-      font-size: 13px;
-      color: #fff;
-      letter-spacing: 0.5px;
-    }
-  }
-
-  .__err_text {
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.56;
-    letter-spacing: normal;
+  .container {
     text-align: center;
-    color: #383838;
-  }
 
-  .__back {
-    position: relative;
-    top: -50px;
-    b {
-      display: block;
-      font-size: 17px;
-      margin: 0 0 21px;
+    .errorMsg {
       color: #aaa;
-      font-weight: 300;
+      font-size: 16px;
+      margin-bottom: 20px;
     }
   }
 `;

@@ -2,8 +2,8 @@
   "name": "NextJS",
   "version": "0.1.0",
   "engines": {
-    "node": "14.17.5",
-    "npm": "6.14.14"
+    "node": "16.19.0",
+    "npm": "8.19.3"
   },
   "private": true,
   "scripts": {
@@ -15,31 +15,32 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "@types/node": "17.0.18",
-    "@types/react": "17.0.39",
-    "antd": "4.21.3",
+    "antd": "5.0.7",
     "axios": "0.26.0",
-    "babel-plugin-styled-components": "2.0.3",
-    "body-parser": "1.20.0",
+    "body-parser": "1.20.1",
     "cookie-parser": "1.4.6",
     "cors": "2.8.5",
-    "dotenv": "16.0.0",
-    "eslint": "8.9.0",
-    "eslint-config-next": "12.1.0",
-    "express": "4.17.3",
+    "dotenv": "16.0.3",
+    "eslint": "8.30.0",
+    "eslint-config-next": "13.0.7",
+    "express": "4.18.2",
     "express-session": "1.17.3",
-    "mongodb": "4.4.0",
-    "mongoose": "6.2.2",
-    "next": "12.1.0",
-    "nodemon": "2.0.15",
+    "mongodb": "4.12.1",
+    "mongoose": "6.8.0",
+    "next": "13.0.7",
+    "nodemon": "2.0.20",
     "nookies": "2.5.2",
     "npm-run-all": "4.1.5",
     "path": "0.12.7",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-query": "3.39.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-query": "3.39.2",
     "styled-components": "5.3.5",
-    "typescript": "4.5.5",
+    "typescript": "4.9.4",
     "zustand": "4.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.17",
+    "@types/react": "18.0.26"
   }
 }

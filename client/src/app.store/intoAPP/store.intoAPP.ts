@@ -10,16 +10,15 @@ export const useStoreIntoAPP = create<any>((set, get) => ({
 
   requestAuthUser: async (): Promise<any> => {
     const session = await axios.get('/api/user/session');
-    console.log(session);
 
     set((state) => {
       state.getUser = {
-        login: session.data.login,
+        login: session.data.result.login,
         isLoading: false,
       };
       state.userInfo = {
         ...state.userInfo,
-        ...session.data.user,
+        ...session.data.result.user,
       };
     });
   },

@@ -7,11 +7,6 @@ const Page_Sign = () => {
     <StyledWrapper>
       <div className="login-body">
         <SignForm />
-        <div className="desc">
-          Chrome 브라우저에 최적화 되어있습니다.
-          <br />
-          copyright © 2022
-        </div>
       </div>
     </StyledWrapper>
   );
@@ -34,14 +29,5 @@ const StyledWrapper = styled.div`
     width: 440px;
     border: 1px solid #eee;
     background: #fff;
-  }
-
-  .desc {
-    font-size: 13px;
-    line-height: 16px;
-    text-align: center;
-    margin-top: 14px;
-    color: #797979;
-    font-weight: 200;
   }
 `;

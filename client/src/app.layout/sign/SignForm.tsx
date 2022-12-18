@@ -1,36 +1,34 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import { Form, Input, Button, Spin } from 'antd';
+import API from 'app.modules/api';
 import { errorNoti } from 'app.components/errorNoti';
 
 const SignForm = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onFinish = async ({ id, password }) => {
     try {
-      setLoading(true);
-      const res = await axios.post('/api/user/signin', { id, password });
+      setIsLoading(true);
+      const res = await API.POST({
+        url: '/api/user/signin',
+        data: { id, password },
+      });
       if (res.data.error) throw res.data.error;
       history.pushState('', '', '/');
       return location.reload();
     } catch (err) {
-      errorNoti(err.response.data);
-      setLoading(false);
+      errorNoti(err);
+      setIsLoading(false);
     }
   };
 
   return (
     <StyledWrapper>
-      <div className="sign-logo">
-        <img src="/images/logo.png" className="logo" />
+      <div className="logo">
+        <img src="/images/logo.png" />
       </div>
-
-      <Form
-        name="form-login"
-        onFinish={onFinish}
-        initialValues={{ remember: true }}
-      >
+      <Form className="form-login" onFinish={onFinish}>
         <Form.Item
           name="id"
           rules={[{ required: true, message: '아이디를 입력해주세요' }]}
@@ -45,9 +43,9 @@ const SignForm = () => {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item className="submit-item">
-          <Spin spinning={loading}>
-            <Button type="primary" htmlType="submit">
+        <Form.Item className="button-login">
+          <Spin spinning={isLoading}>
+            <Button type="primary" htmlType="submit" disabled={isLoading}>
               LOGIN
             </Button>
           </Spin>
@@ -59,60 +57,105 @@ const SignForm = () => {
 
 export default SignForm;
 
-const _height = 60;
+const _height = 56;
 const StyledWrapper = styled.div`
-  .sign-logo {
-    display: block;
-    width: 80px;
-    margin: 0 auto 30px;
-  }
+  .logo {
+    margin-bottom: 40px;
 
-  .ant-row.ant-form-item {
-    position: relative;
-    margin: 0 0 -1px;
-    input {
-      height: 100%;
-      font-weight: 700;
-      font-size: 15px !important;
-      &:focus,
-      &:hover {
-        z-index: 1;
-      }
-    }
-
-    .ant-form-item-control-input-content {
-      height: ${_height}px;
-    }
-    .ant-input-password {
-      height: 58px;
-    }
-
-    .ant-form-item-explain {
-      position: absolute;
-      top: 18px;
-      right: 37px;
-      z-index: 1;
-      &:focus,
-      &:hover {
-        z-index: 1;
-      }
-      &:active {
-        z-index: -1;
-      }
+    img {
+      width: 80px;
     }
   }
 
-  .submit-item {
-    margin: 20px 0 0 !important;
-    .ant-btn {
+  .form-login {
+    .ant-input {
+      padding: 4px 24px;
+    }
+
+    #password.ant-input {
+      padding: 4px 12px;
+    }
+
+    .ant-form-item {
       width: 100%;
-      height: ${_height}px;
-      border: none;
-      background: var(--color-main);
-      font-weight: 700;
-      font-size: 21px;
-      letter-spacing: 1.1px;
-      color: #000;
+      margin-bottom: 16px;
+    }
+
+    .ant-row.ant-form-item-row {
+      position: relative;
+      margin: 0 0 -1px;
+
+      input {
+        height: 100%;
+        font-weight: 700;
+        font-size: 16px !important;
+        border-radius: 16px;
+
+        &:focus,
+        &:hover {
+          z-index: 1;
+        }
+      }
+
+      .ant-form-item-control-input-content {
+        height: ${_height}px;
+      }
+
+      .ant-input-password {
+        height: 58px;
+        border-radius: 16px;
+
+        img {
+          width: 24px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .ant-form-item-explain {
+        width: unset;
+        position: absolute;
+        top: 19px;
+        right: 40px;
+        z-index: 1;
+
+        &:focus,
+        &:hover {
+          z-index: 1;
+        }
+
+        &:active {
+          z-index: -1;
+        }
+      }
+    }
+
+    .button-login {
+      margin: 56px 20px 0 0 !important;
+
+      .ant-spin-dot-item {
+        background: #ff4141;
+      }
+
+      .ant-btn {
+        width: 100%;
+        height: ${_height}px;
+        border: none;
+        border-radius: 16px;
+        background: var(--color-main);
+
+        span {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1.33;
+          letter-spacing: 2px;
+          text-align: center;
+          color: #383838;
+          margin-top: 2px;
+        }
+      }
     }
   }
 `;

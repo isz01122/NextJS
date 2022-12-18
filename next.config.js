@@ -1,5 +1,13 @@
+const isProduction = process.env.NODE_ENV === 'production';
+
 const NEXT_CONFIG = {
   distDir: './.next',
+  reactStrictMode: false,
+  swcMinify: true,
+  compiler: {
+    styledComponents: true,
+    removeConsole: isProduction,
+  },
 
   webpack: (config) => {
     config.output = config.output || {};
@@ -12,7 +20,7 @@ const NEXT_CONFIG = {
   },
 
   async rewrites() {
-    const dev = process.env.NODE_ENV !== 'production';
+    const dev = !isProduction;
     return [
       {
         source: '/api/:path*',

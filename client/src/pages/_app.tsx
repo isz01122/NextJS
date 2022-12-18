@@ -19,8 +19,7 @@ const queryClient = new QueryClient({
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       refetchIntervalInBackground: false,
-      notifyOnChangeProps: 'tracked',
-      cacheTime: 1000 * 60 * 5,
+      cacheTime: 1,
     },
   },
 });
@@ -34,15 +33,8 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   if (getUser.isLoading) return null;
-  return (
-    <>
-      {getUser.login ? (
-        <AppLayout contentsComponent={<Component {...pageProps} />} />
-      ) : (
-        <PageSign />
-      )}
-    </>
-  );
+  if (!getUser.login) return <PageSign />;
+  return <AppLayout contentsComponent={<Component {...pageProps} />} />;
 };
 
 const AppContainer = (props) => {

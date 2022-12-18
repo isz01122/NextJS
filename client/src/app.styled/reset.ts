@@ -184,4 +184,17 @@ export const resetCSS = css`
   img {
     width: 100%;
   }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 9999px #fff inset;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    transition-delay: 9999s;
+  }
 `;
