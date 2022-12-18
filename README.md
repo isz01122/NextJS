@@ -18,4 +18,6 @@ NextJS Project
 Runs the app in the development mode.\
 Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
-`바로가기` [https://front-dori.herokuapp.com/](https://front-dori.herokuapp.com/)
+`바로가기` ~~[https://front-dori.herokuapp.com/](https://front-dori.herokuapp.com/)~~
+
+heroku 무료버전 종료 인해 접속이 불가능합니다.
